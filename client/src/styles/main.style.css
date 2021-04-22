@@ -1,0 +1,59 @@
+body,html{
+    height: 100%;
+}
+
+#root{
+    height: 100%;
+}
+
+.label{
+    text-align: center;
+}
+
+button{
+    margin-top: 1rem;
+    width: 100%;
+    white-space: normal;
+    word-break: break-all;
+}
+
+.rs-picker-input,.rs-btn{
+    width: 100%!important;
+}
+.rs-btn{
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+
+.tilePanel{
+    width: 100%;
+    height: 100%;
+    margin-top: 1rem;
+    
+}
+
+.addPanel{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.withMargin{
+    margin-top: 1rem;
+}
+
+.withMarginTopAndBot{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.fullWidth{
+    width:100%
+}
+

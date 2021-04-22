@@ -1,0 +1,30 @@
+
+
+th,td,tr{
+    color:black;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+th{
+    border:1px solid black;
+}
+
+tr{
+    page-break-inside: avoid;  
+}
+
+.inspectionResultTD{
+    padding: 5px;
+    margin: 1rem;
+}
+
+.inspectionReportTD{
+    padding: 1rem;
+    border: 1px solid black;
+    page-break-inside: avoid;
+}
+
+.tableGrayHeading{
+    background-color: darkgray;
+}

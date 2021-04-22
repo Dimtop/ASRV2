@@ -1,0 +1,85 @@
+const inspectionMeasurementsMVModel = {
+
+    "2_2":{
+        avg:0,
+        result:false
+    },
+    "2_3_2":{
+        avg:0,
+        result:false
+    },
+    "4_3_1":{
+        avg:0,
+        result:false
+    },
+
+    "5_2_4":{
+        avg:0,
+        result:false
+    },
+    "5_2_6":{
+        values:[0,0,0],
+        result:false
+    },
+    "5_3":{
+        values:[{
+                    p1:0,
+                    q:0
+                },{
+                    p1:0,
+                    q:0
+                },{
+                    p1:0,
+                    q:0
+                }],
+        result:false
+    },
+    "5_4_1":{
+        avg:0,
+        result:false
+    },
+    "8_2_1_b":{
+        low:0,
+        high:0,
+        result:false
+    },
+    "8_2_1_c":{
+        value:0,
+        result:false
+    },
+    "8_2_2_b":{
+        values:[],
+        result:true
+    },
+    "8_2_2_c":{
+        values:[],
+        result:true
+    },
+    "8_2_5":{
+        values:[],
+        result:false
+    },
+    "8_2_6":{
+        values:[],
+        result:false
+    },
+    "9_1":{
+        values:[],
+        result:false
+    },
+    "9_2":{
+        values:[],
+        result:false
+    },
+
+    "10_2":{
+        values:[],
+        result:false
+    },
+    "10_3_2":{
+        result:false
+    }
+}
+
+
+export default inspectionMeasurementsMVModel;
