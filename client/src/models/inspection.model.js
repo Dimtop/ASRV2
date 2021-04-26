@@ -63,6 +63,9 @@ function getInspectionModel(sprayer,category){
         result:0
     }
 
+    console.log("MODEL")
+    console.log(inspectionModel)
+
     return inspectionModel
 }
 

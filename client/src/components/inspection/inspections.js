@@ -6,7 +6,9 @@ import "../../styles/main.style.css";
 //Components
 import InspectionTile from './inspectionTile';
 import InspectionFilters from './inspectionFilters'
+import InspectionsActions from './inspectionsActions'
 import { Alert,Grid,Row,Col } from 'rsuite';
+import History from '../utils/history'
 //Libraries
 import Cookies from 'js-cookie'
 
@@ -18,6 +20,9 @@ import {getInspections,getSprayer,getPreInspection} from "../../helpers/dataMana
 
 export default function Inspections(){
 
+
+    //History
+    History.push("/inspections")
     const [inspections,setInspections] = useState([]);
     const [filteredInspections,setFilteredInspections] = useState([])
     const [sprayers,setSprayers] = useState([])
@@ -55,7 +60,8 @@ export default function Inspections(){
 
     return(
         <>
-            <InspectionFilters sprayers={sprayers} setFilteredInspections={setFilteredInspections} inspections={inspections}/>
+            <InspectionFilters sprayers={sprayers} setFilteredInspections={setFilteredInspections} inspections={inspections} />
+            <InspectionsActions filteredInspections={filteredInspections}/>
             <Grid className="withMargin">
                 <Row>
                     {
@@ -68,7 +74,7 @@ export default function Inspections(){
 
                 </Row>
             </Grid>
-         
+          
 
         </>
     )

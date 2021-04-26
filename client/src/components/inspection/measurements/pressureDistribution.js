@@ -19,7 +19,7 @@ export default function PressureDistribution(props){
         <>
 
             <Panel bordered header={props.paragraph.replaceAll("_",".") + " Κατανομή πίεσης"} className="withMargin">
-               <p>Υπολογίζεται αυτόματα από τις τιμές της παραγράφου 5.9 και την δηλωμένη μέγιστη πίεση ψεκαστικού</p>
+               <p>{"Υπολογίζεται αυτόματα από τις τιμές της παραγράφου " + props.refParagraph.replaceAll("_",".") + "και την δηλωμένη μέγιστη πίεση ψεκαστικού"}</p>
             </Panel>
             
         </>

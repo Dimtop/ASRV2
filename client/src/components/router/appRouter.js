@@ -23,12 +23,14 @@ import PreInspections from '../preInspection/preInspections'
 import Inspection from '../inspection/inspection'
 import Inspections from '../inspection/inspections'
 import InspectionReport from '../inspection/report/inspectionReport'
+import InspectionsReport from '../inspection/report/inspectionsReport'
+import History from '../utils/history'
 
 export default function AppRouter(){
     
-
+  
   return(
-    <Router>
+    <Router history={History}>
 
       <Switch>
         <Route exact path="/">
@@ -71,12 +73,17 @@ export default function AppRouter(){
           {Cookies.get("auth")?<PreInspection new={false} />: <Forbidden />}
         </Route>
 
+        <Route exact path="/inspections/report">
+          <InspectionsReport  />
+        </Route>
         <Route exact path="/inspections/new">
           {Cookies.get("auth")?<Inspection new={true} />: <Forbidden />}
         </Route>
+
         <Route exact path="/inspections">
           {Cookies.get("auth")?<Inspections  />: <Forbidden />}
         </Route>
+
         <Route exact path="/inspections/:inspectionID/report">
           {Cookies.get("auth")?<InspectionReport new={false} />: <Forbidden />}
         </Route>

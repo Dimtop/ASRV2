@@ -238,6 +238,16 @@ async function getInspection(inspectionID){
     })
 }
 
+async function getInspectionByInspectionNumber(inspectionNumber,userID){
+    return await fetch("/api/inspections/byInspectionNumber?userID=" +userID +"&inspectionNumber=" + inspectionNumber ,{
+        method:"get"
+    })
+    .then(res=>res.json())
+    .then(res=>{
+        return res;
+    })
+}
+
 async function updateInspection(inspection){
     console.log(inspection)
     return await fetch("/api/inspections/" + inspection._id,{
@@ -284,5 +294,6 @@ export {updatePreInspection};
 export {getPreInspections};
 export {createInspection};
 export {getInspection};
+export {getInspectionByInspectionNumber}
 export {updateInspection};
 export {getInspections};

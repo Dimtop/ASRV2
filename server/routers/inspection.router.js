@@ -5,6 +5,7 @@ var router = express.Router();
 const inspectionController = require("../controllers/inspection.controller")
 
 router.post("/",inspectionController.postInspection)
+router.get("/byInspectionNumber",inspectionController.getInspectionByInspectionNumber)
 router.get("/:inspectionID",inspectionController.getInspection)
 router.get("/",inspectionController.getInspections)
 router.put("/:inspectionID",inspectionController.updateInspection)

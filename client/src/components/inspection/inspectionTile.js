@@ -77,7 +77,7 @@ export default function InspectionTile(props){
           
   
                     <Button appearance="ghost" onClick={()=>location.replace("/inspections/" + props.inspection._id)}>Επεξεργασία</Button>
-                    <Button appearance="ghost">Προβολή αναφοράς</Button>
+                    <Button appearance="ghost" onClick={()=>location.replace("/inspections/" + props.inspection._id) + "/report"}>Προβολή αναφοράς</Button>
                 </Panel>
             </Col>
 

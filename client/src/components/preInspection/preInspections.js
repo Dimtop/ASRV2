@@ -7,6 +7,7 @@ import "../../styles/main.style.css";
 import PreInspectionTile from './preInspectionTile';
 import PreInspectionFilters from './preInspectionFilters'
 import { Alert,Grid,Row,Col } from 'rsuite';
+import History from '../utils/history'
 //Libraries
 import Cookies from 'js-cookie'
 
@@ -16,6 +17,9 @@ import {getPreInspections,getSprayer} from "../../helpers/dataManager"
 
 
 export default function PreInspections(){
+
+    //History
+    History.push("/preInspections")
 
     const [preInspections,setPreInspections] = useState([]);
     const [filteredPreInspections,setFilteredPreInspections] = useState([])

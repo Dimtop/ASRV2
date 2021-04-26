@@ -18,6 +18,7 @@ export default function NozzleDistance(props){
 
             <Panel bordered header={props.paragraph.replaceAll("_",".") + " Απόσταση μεταξύ ακροφυσίων"} className="withMargin">
                 <Grid fluid>
+                    
                     <Row>
                         {
                             props.sprayer.branches.map((branch,branchIndex)=>{

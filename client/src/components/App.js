@@ -19,9 +19,10 @@ function App() {
   const [showMenu,setShowMenu] = useState(false);
   return (
     <>
-    <Grid id="appContainer" fluid>
+
       {
         location.href.indexOf("report")<0?
+        <Grid id="appContainer" fluid>
         <Row>
         <Col xs={24}>
           <TitleLogo />
@@ -29,13 +30,15 @@ function App() {
           {Cookies.get("auth")=="1"?  <Menu showMenu={showMenu} setShowMenu={setShowMenu}/> :<></>}
         </Col>
       </Row>
-      :
-      <></>
-      }
       <AppRouter/>
+      </Grid>
+      :
+      <AppRouter/>
+      }
+ 
      
 
-    </Grid>
+
 
     </>
   );

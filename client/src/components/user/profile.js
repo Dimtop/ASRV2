@@ -11,8 +11,15 @@ import {stationTypes} from '../../data/stationTypes';
 import {getUser,updateUser} from '../../helpers/dataManager';
 import { update } from '../../../../server/models/user.model';
 
+//Components
+import History from '../utils/history'
+
 export default function Profile(){
 
+
+    //History
+    History.push("/profile")
+    
     const [user,setUser] = useState({});
 
     useEffect(async ()=>{

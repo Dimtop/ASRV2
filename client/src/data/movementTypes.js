@@ -1,15 +1,15 @@
 const movementTypes = [
     {
         name:"Αυτοκινούμενος",
-        code:"auto"
+        code:"Αυτοκινούμενος"
     },
     {
         name:"Αναρτώμενος",
-        code:"attached"
+        code:"Αναρτώμενος"
     },
     {
         name:"Συρόμενος",
-        code:"trailer"
+        code:"Συρόμενος"
     }
 ];
 

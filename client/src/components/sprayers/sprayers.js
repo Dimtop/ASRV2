@@ -10,8 +10,12 @@ import Cookies from 'js-cookie'
 import {Alert,Grid,Row,Button,Col} from 'rsuite'
 import SprayerTile from './sprayerTile'
 import SprayerFilters from './sprayerFilters'
+import History from '../utils/history'
 
 export default function Sprayers(props){
+
+    //History
+    History.push("/sprayers")
 
     const [sprayers,setSprayers] = useState([]);
     const [filteredSprayers,setFilteredSprayers] = useState([])

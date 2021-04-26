@@ -43,7 +43,12 @@ export default function InspectionFilters(props) {
                         <DateRangePicker className="fullWidth"  onChange={(value)=>setFilters({...filters,dateRange:value})}/>
                     </Col>
                     <Col xs={24} >
-                        <Button appearance="primary" onClick={ ()=>props.setFilteredInspections(filterInspections(props.sprayers,props.inspections,filters))}>Εφαρμογή</Button>
+                        <Button appearance="primary" onClick={ ()=>{
+                                    props.setFilteredInspections(filterInspections(props.sprayers,props.inspections,filters))
+                                   
+                                }
+                   
+                            }>Εφαρμογή</Button>
                     </Col>
                     <Col xs={24} >
                         <Button appearance="primary" onClick={ ()=>location.reload()}>Επαναφορά</Button>
@@ -107,3 +112,4 @@ export default function InspectionFilters(props) {
 
     return inspections;
 }
+

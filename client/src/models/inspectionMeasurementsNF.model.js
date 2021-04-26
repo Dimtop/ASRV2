@@ -1,5 +1,8 @@
 const inspectionMeasurementsNFModel = {
-
+    "2_1_1":{
+        avg:0,
+        result:false
+    },
     "2_2":{
         avg:0,
         result:false
@@ -37,7 +40,10 @@ const inspectionMeasurementsNFModel = {
         avg:0,
         result:false
     },
-
+    "5_4_2":{
+        avg:0,
+        result:false
+    },
     "9_1":{
         values:[],
         result:false

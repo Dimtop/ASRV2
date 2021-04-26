@@ -1,5 +1,9 @@
 const inspectionMeasurementsMVModel = {
 
+    "2_1_2_a":{
+        avg:0,
+        result:false
+    },
     "2_2":{
         avg:0,
         result:false
@@ -38,6 +42,10 @@ const inspectionMeasurementsMVModel = {
         avg:0,
         result:false
     },
+    "5_4_2":{
+        avg:0,
+        result:false
+    },
     "8_2_1_b":{
         low:0,
         high:0,
@@ -63,15 +71,6 @@ const inspectionMeasurementsMVModel = {
         values:[],
         result:false
     },
-    "9_1":{
-        values:[],
-        result:false
-    },
-    "9_2":{
-        values:[],
-        result:false
-    },
-
     "10_2":{
         values:[],
         result:false

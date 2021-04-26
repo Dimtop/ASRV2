@@ -106,7 +106,7 @@ function Sprayer(props){
                             <InputPicker data={mapCategoriesToPickerData(categories)} value={sprayer.categoryID} defaultValue={"604f8ceccc02fcdb73c3b544"} onChange={(value)=>setSprayer({...sprayer,categoryID:value})}/>
                         </Col>
                         <Col xs={24} md={12}>
-                            <p className="label">Κατηγορία</p>
+                            <p className="label">Τύπος κίνησης</p>
                             <InputPicker data={mapMovementTypesToPickerData(movementTypes)} value={sprayer.movementType} defaultValue={"auto"} onChange={(value)=>setSprayer({...sprayer,movementType:value})}/>
                         </Col>
                         <Col xs={24} md={12}>

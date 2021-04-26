@@ -27,11 +27,32 @@ exports.postInspection = async(req,res)=>{
 }
 
 exports.getInspection = async(req,res)=>{
+    console.log(req.params.inspectionID)
     await inspectionModel.findOne({_id:req.params.inspectionID},(error,inspection)=>{
         if(error){
             console.log(error)
             res.send({error:error})
             return
+        }
+
+        res.send({error:null,inspection:inspection});
+    })
+}
+
+exports.getInspectionByInspectionNumber = async(req,res)=>{
+
+    console.log(req.query)
+
+    await inspectionModel.findOne({inspectionNumber:req.query.inspectionNumber,userID:req.query.userID},(error,inspection)=>{
+        if(error){
+            console.log(error)
+            res.send({error:error})
+            return
+        }
+        if(!inspection){
+            console.log("Η επιθεώρηση δεν βρέθηκε")
+            res.send({error:"Η επιθεώρηση δεν βρέθηκε"})
+            return 
         }
 
         res.send({error:null,inspection:inspection});

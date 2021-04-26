@@ -1,5 +1,10 @@
 const inspectionMeasurementsBCModel = {
 
+
+    "2_1_2_b":{
+        avg:0,
+        result:false
+    },    
     "2_2":{
         avg:0,
         result:false
@@ -34,6 +39,10 @@ const inspectionMeasurementsBCModel = {
         result:false
     },
     "5_4_1":{
+        avg:0,
+        result:false
+    },
+    "5_4_2":{
         avg:0,
         result:false
     },

@@ -22,10 +22,10 @@ export default function FlowmeterVolumeRateOfChange(props){
     useEffect(()=>{
         var injectors = [];
         var injectorsRef = [];
-        for(var i=0;i<props.inspection.measurements["9_3_2_a"].values.length;i++){
+        for(var i=0;i<props.inspection.measurements[props.refParagraph].values.length;i++){
        
-            for(var y=0;y<props.inspection.measurements["9_3_2_a"].values[i].length;y++){
-                injectors.push(Math.max(...props.inspection.measurements["9_3_2_a"].values[i][y]))
+            for(var y=0;y<props.inspection.measurements[props.refParagraph].values[i].length;y++){
+                injectors.push(Math.max(...props.inspection.measurements[props.refParagraph].values[i][y]))
                 injectorsRef.push(Math.max(...props.sprayer.branches[i].injectors[y].nozzles.map(e=>e.flow)))
                
             }

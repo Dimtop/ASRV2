@@ -6,12 +6,15 @@ import Cookies from 'js-cookie';
 //Components
 import CustomerTile from './customerTile';
 import {Grid,Row,Icon,Col,Button,Panel} from 'rsuite'
+import History from '../utils/history'
 //Helpers
 import {getCustomers} from '../../helpers/dataManager';
 
 
 
 export default function Customers(){
+
+ 
     
     const [customers,setCustomers] = useState([]);
 
@@ -19,6 +22,8 @@ export default function Customers(){
  
         var customersData = await getCustomers("?userID=" + Cookies.get("userID"));
         setCustomers(customersData.customers);
+           //History
+        History.push("/customers")
     },[])
 
     return(

@@ -8,7 +8,24 @@ import extractTechnicalReportFromSprayer from '../../../helpers/extractTechnical
 import getNozzlesNumberFromSprayer from '../../../helpers/getNozzlesNumberFromSprayer'
 //Components
 import ReportTechnicalReport from './reportTechnicalReport'
-
+import FlowmeterVolumeRateOfChangeReport from './measurements/flowmeterVolumeRateOfChangeReport'
+import PressureMaintenanceUponStopReport from './measurements/pressureMaintenanceUponStopReport'
+import PressureMaintenanceUponSprayingStopReport from './measurements/pressureMaintenanceUponSprayingStopReport'
+import PumpSupplyReport from './measurements/pumpSupplyReport'
+import NozzlesDistanceReport from './measurements/nozzlesDistanceReport'
+import ArmSymmetryReport from './measurements/armSymmetryReport'
+import AirPressureReport from './measurements/airPressureReport'
+import PressureIndicatorPrecisionReport from './measurements/pressureIndicatorPrecisionReport'
+import PressureMaintenanceReport from './measurements/pressureMaintenanceReport'
+import PumpVibrationsReport from './measurements/pumpVibrationsReport'
+import ArmDistanceHorizontalReport from './measurements/armDistanceHorizontalReport'
+import ArmDistanceVerticalReport from './measurements/armDistanceVerticalReport'
+import NozzlesOrientationReport from './measurements/nozzlesOrientationReport'
+import NozzlesSupplyReport from './measurements/nozzlesSupplyReport'
+import MeshOpeningReport from './measurements/meshOpeningReport'
+import PressureDistributionReport from './measurements/pressureDistributionReport'
+import PressureDropReport from './measurements/pressureDropReport'
+import PressureIndicatorDiameterReport from './measurements/pressureIndicatorDiameterReport'
 //Libraries
 import Cookies from 'js-cookie';
 
@@ -77,8 +94,8 @@ export default function InpsectionReport(){
 
         var userData = await getUser(Cookies.get("userID"))
         document.title = userData.user.region +" " + userData.user.IDNumber + " " + inspectionData.inspection.inspectionNumber
-        
 
+        console.log(inspectionData.inspection)
         setInspection(inspectionData.inspection);
         setPreInspection(preInspectionData.preInspection)
         setSprayer(sprayerData.sprayer)
@@ -87,14 +104,13 @@ export default function InpsectionReport(){
         setCustomers(customers);
         setUser(userData.user)
         setTechnicalReport(extractTechnicalReportFromSprayer(sprayerData.sprayer,categoriesData.categories))
-    },[])
-
+    })
 
 
     return(
       
-        <>
-        <div style={{width:"100%", height:"100%",backgroundColor:"white"}}>
+   
+        <div style={{width:"100%",backgroundColor:"white",height:"auto"}}>
         <div style={{width:"100%", height:"100vh",backgroundColor:"white"}} >  
             <div style={{textAlign:"center"}}>
                 <img style={{width:"200px",height:"100px"}} src={user.logo}/>
@@ -200,16 +216,22 @@ export default function InpsectionReport(){
                 </li>
             </ul>
             <p style={{color:"black"}}><b>Παρατηρήσεις: βλ. σελίδα 2</b></p>
-            <p style={{color:"black",marginTop:"2rem"}}><b>Ο ιδιοκτήτης:</b></p>
-            <p style={{color:"black"}}>
-                Έλαβα γνώση των αποτελεσμάτων της επιθεώρησης και
-                των αποκλίσεων τις οποίες πρέπει να αποκαταστήσω
-                σύμφωνα με τις υποδείξεις του ΣΤΕΕΓΦ και τα
-                προβλεπόμενα στις ισχύουσες διατάξεις.
-            </p>
-
+       
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",marginTop:"2rem"}}>
                 <div style={{textAlign:"center"}}>
+                <p style={{color:"black",marginTop:"2rem"}}><b>Ο ιδιοκτήτης:</b></p>
+                    <p style={{color:"black"}}>
+                        Έλαβα γνώση των αποτελεσμάτων της επιθεώρησης και
+                        των αποκλίσεων τις οποίες πρέπει να αποκαταστήσω
+                        σύμφωνα με τις υποδείξεις του ΣΤΕΕΓΦ και τα
+                        προβλεπόμενα στις ισχύουσες διατάξεις.
+                    </p>
+                </div>
+                <div></div>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",marginTop:"2rem"}}>
+                <div style={{textAlign:"center"}}>
+                   
                     <p style={{color:"black"}}>Υπογραφή</p>
                 </div>
                 <div style={{textAlign:"center"}}>
@@ -227,7 +249,7 @@ export default function InpsectionReport(){
 
             {
                 Object.entries(inspection.technicalReport).map((e,i)=>{
-                    console.log(e)
+    
                     if(e[1].notes && e[1].notes!=""){
                     
                         return <p style={{color:"black"}}>{ e[0].replaceAll("_",".") +" " + e[1].notes}</p>
@@ -308,7 +330,7 @@ export default function InpsectionReport(){
                 </li>
             </ul>  
         </div>
-        <div style={{pageBreakBefore:"always",width:"100%",backgroundColor:"white"}}>
+        <div style={{pageBreakBefore:"always",width:"100%",height:"auto",backgroundColor:"white"}}>
             
   
 
@@ -325,11 +347,78 @@ export default function InpsectionReport(){
             
 
         </div>
-        <div style={{pageBreakBefore:"always",width:"100%",height:"auto",backgroundColor:"white"}}>
-            <h3 style={{color:'black',textAlign:"center"}}>Μετρητικοί έλεγχοι</h3>                    
-        </div>
+   
+        {
+            category.code=="bc"?
+            <div style={{pageBreakBefore:"always",width:"100%",height:"auto",backgroundColor:"white"}}>
+                <h3 style={{color:'black',textAlign:"center"}}>Μετρητικοί έλεγχοι</h3> 
+            <PumpSupplyReport inspection={inspection} paragraph={"2_1_1"}/>
+            <PumpVibrationsReport inspection={inspection} paragraph={"2_2"}/>
+            <AirPressureReport inspection={inspection} paragraph={"2_3_2"}/>
+            <MeshOpeningReport inspection={inspection} paragraph={"4_3_1"}/>
+            <PressureIndicatorPrecisionReport inspection={inspection} sprayer={sprayer} paragraph={"5_2_3"}/>
+            <PressureIndicatorDiameterReport inspection={inspection} paragraph={"5_2_4"}/>
+            <PressureMaintenanceReport inspection={inspection} paragraph={"5_4_1"}/>
+            <PressureMaintenanceUponSprayingStopReport inspection={inspection} paragraph={"5_4_2"}/>
+            <ArmSymmetryReport inspection={inspection} paragraph={"8_1_2"}/>
+            <NozzlesDistanceReport inspection={inspection} paragraph={"8_3_1"}/>
+            <NozzlesOrientationReport  inspection={inspection} paragraph={"8_3_2"}/>
+            <ArmDistanceVerticalReport inspection={inspection} paragraph={"8_4_1"}/>
+            <ArmDistanceHorizontalReport inspection={inspection} paragraph={"8_4_2"}/>
+            <PressureMaintenanceUponStopReport inspection={inspection} paragraph={"8_8"}/> 
+            <PressureDropReport inspection={inspection} paragraph={"8_9"}/>
+            <NozzlesSupplyReport inspection={inspection} paragraph={"9_3_2_a"}/>
+            <FlowmeterVolumeRateOfChangeReport inspection={inspection} paragraph={"5_3"}/>      
+            <PressureDistributionReport inspection={inspection} paragraph={"9_3_2_b"} refParagraph={"8_9"}/>
+            </div>
+            :
+            category.code=="nf"?
+            <div style={{pageBreakBefore:"always",width:"100%",height:"auto",backgroundColor:"white",textAlign:"center"}}>
+                <h3 style={{color:'black',textAlign:"center"}}>Μετρητικοί έλεγχοι</h3> 
+            <PumpSupplyReport inspection={inspection} paragraph={"2_1_1"}/>
+            <PumpVibrationsReport inspection={inspection} paragraph={"2_2"}/>
+            <AirPressureReport inspection={inspection} paragraph={"2_3_2"}/>
+            <MeshOpeningReport inspection={inspection} paragraph={"4_3_1"}/>
+            <PressureIndicatorPrecisionReport inspection={inspection} sprayer={sprayer} paragraph={"5_2_3"}/>
+            <PressureIndicatorDiameterReport inspection={inspection} paragraph={"5_2_4"}/>
+            <PressureMaintenanceReport inspection={inspection} paragraph={"5_4_1"}/>
+            <PressureMaintenanceUponSprayingStopReport inspection={inspection} paragraph={"5_4_2"}/>
+            <PressureDropReport inspection={inspection} paragraph={"9_1"}/>
+            <PressureMaintenanceUponStopReport inspection={inspection} paragraph={"9_2"}/> 
+            <NozzlesSupplyReport inspection={inspection} paragraph={"9_3_2_a"}/>
+            <FlowmeterVolumeRateOfChangeReport inspection={inspection} paragraph={"5_3"}/>  
+            <PressureDistributionReport inspection={inspection} paragraph={"9_3_2_b"} refParagraph={"9_1"}/> 
+            </div>
+            :
+            category.code=="mv"?
+            <div style={{pageBreakBefore:"always",width:"100%",height:"auto",backgroundColor:"white"}}>
+                <h3 style={{color:'black',textAlign:"center"}}>Μετρητικοί έλεγχοι</h3> 
+            <PumpSupplyReport inspection={inspection} paragraph={"2_1_2_a"}/>
+            <PumpVibrationsReport inspection={inspection} paragraph={"2_2"}/>
+            <AirPressureReport inspection={inspection} paragraph={"2_3_2"}/>
+            <MeshOpeningReport inspection={inspection} paragraph={"4_3_1"}/>
+            <PressureIndicatorPrecisionReport inspection={inspection} sprayer={sprayer} paragraph={"5_2_6"}/>
+            <PressureIndicatorDiameterReport inspection={inspection} paragraph={"5_2_4"}/>
+            <PressureMaintenanceReport inspection={inspection} paragraph={"5_4_1"}/>
+            <PressureMaintenanceUponSprayingStopReport inspection={inspection} paragraph={"5_4_2"}/>
+            <ArmDistanceVerticalReport inspection={inspection} paragraph={"8_2_1_b"}/>
+            <ArmDistanceHorizontalReport inspection={inspection} paragraph={"8_2_1_c"}/>
+            <NozzlesDistanceReport inspection={inspection} paragraph={"8_2_2_b"}/>
+            <NozzlesOrientationReport  inspection={inspection} paragraph={"8_2_2_c"}/>
+            <PressureMaintenanceUponStopReport inspection={inspection} paragraph={"8_2_5"}/> 
+            <PressureDropReport inspection={inspection} paragraph={"8_2_6"}/>
+            <NozzlesSupplyReport inspection={inspection} paragraph={"10_2"}/>
+            <FlowmeterVolumeRateOfChangeReport inspection={inspection} paragraph={"5_3"}/>  
+            <PressureDistributionReport inspection={inspection} paragraph={"10_3_2"} refParagraph={"8_2_6"}/> 
+            </div>
+
+            :
+            <></>
+        }
+          
+    
         </div>    
-        </>
+   
     )
 }
 

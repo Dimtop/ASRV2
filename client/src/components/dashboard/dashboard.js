@@ -8,10 +8,13 @@ import Cookies from 'js-cookie';
 import dashboardConstants from '../../constants/dashboard';
 //Components
 import DashboardTile from './dashboardTile';
+import History from '../utils/history'
 
 export default function Dashboard(){
 
-
+    //history
+    History.push("/dashboard")
+    
     function logout(){
         console.log("test")
         Cookies.remove("auth");

@@ -11,12 +11,13 @@ import "../../styles/main.style.css"
 
 export default function InspectionTechnicalReport(props){
 
+    useEffect(()=>{
 
-
+    },[])
 
     return (
         <>
-       
+            
             {
                 props.technicalReport.map(e=>{
                  

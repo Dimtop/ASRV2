@@ -54,6 +54,9 @@ const userSchema = new mongoose.Schema({
     },
     logo:{
         type:String
+    },
+    subscription:{
+        type:Date
     }
 });
 

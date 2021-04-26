@@ -12,6 +12,7 @@ import getIDFromURL from '../../helpers/getIDFromURL'
 import {Alert,Grid,Row,Col,Panel,Button,Toggle, DatePicker,InputPicker,Input} from 'rsuite';
 import InspectionTechnicalReport from './inspectionTechnicalReport';
 import InpsectionMeasurements from './inspectionMeasurements'
+import History from '../utils/history'
 
 //Models
 import getInspectionModel from '../../models/inspection.model'
@@ -30,7 +31,10 @@ import "../../styles/main.style.css"
 
 export default function Inspection(props){
 
-    const [inspection,setInspection] = useState({})
+    //History
+    History.push("/inspections/" + getIDFromURL("inspections"))
+
+    const [inspection,setInspection] = useState({technicalReport:[]})
     const [preInspection,setPreInspection] = useState({})
     const [sprayer,setSprayer] = useState(sprayerModel)
     const [technicalReportData,setTechnicalReportData] = useState([]);
@@ -44,7 +48,7 @@ export default function Inspection(props){
             Alert.error("Υπήρξε ένα πρόβλημα");
             return;
         }
-
+        console.log(props.new)
         if(props.new){
                 //GETTING THE PREINSPECTION
                 var preInspectionID = new URLSearchParams(window.location.search).get("preInspectionID");
@@ -84,7 +88,8 @@ export default function Inspection(props){
                 Alert.error("Υπήρξε ένα πρόβλημα");
                 return;
             }
-
+            console.log("inspectiopn")
+            console.log(inspectionData)
             setInspection(inspectionData.inspection)
         }
          
@@ -98,8 +103,7 @@ export default function Inspection(props){
 
     },[])
 
-    console.log("INSPECTION")
-    console.log(inspection)
+    
     return(
         <>
 
@@ -142,7 +146,7 @@ export default function Inspection(props){
                                     </Col>
                                     <Col xs={24} md={8}>
                                         <p>Αριθμός sticker</p>
-                                        <Input value={inspection.stickerNumber} onChange={(value)=>setInspection({...inspection,stickerNumber:value})}/>
+                                        <Input value={inspection.result==3||inspection.result==4?"":inspection.stickerNumber} onChange={(value)=>setInspection({...inspection,stickerNumber:value})} disabled={inspection.result==3||inspection.result==4?true:false}/>
                                     </Col>
                                     <Col xs={24} md={8}>
                                         <p>Ένταξη σε κατηγορία 4</p>
@@ -170,7 +174,7 @@ export default function Inspection(props){
                                         </Button>
                                     </Col>
                                     <Col xs={24} md={12}>
-                                        <Button appearance="primary" disabled={props.new}>Προβολή αναφοράς</Button>
+                                        <Button appearance="primary" disabled={props.new} onClick={()=>location.replace("/inspections/" + inspection._id+"/report")}>Προβολή αναφοράς</Button>
                                     </Col>
                                 </Row>
                             </Grid>

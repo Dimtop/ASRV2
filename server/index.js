@@ -23,6 +23,10 @@ const app = express();
 //Configurations
 dotenv.config();
 
+//Static files
+
+app.use(express.static("public"));
+
 //Middleware configuration
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +41,10 @@ app.use("/api/categories",categoryRouter);
 app.use("/api/sprayers",sprayerRouter)
 app.use("/api/preInspections",preInspectionRouter)
 app.use("/api/inspections",inspectionRouter)
+
+app.get("*",(req,res)=>{
+    res.sendFile(path.join(__dirname,"public","index.html"))
+})
 
 //Initializing the server
 app.listen(process.env.PORT, (err)=>{
